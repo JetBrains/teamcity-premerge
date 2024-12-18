@@ -20,7 +20,7 @@
     <dependency>
       <groupId>org.jetbrains.teamcity</groupId>
       <artifactId>server-api</artifactId>
-      <version>${teamcity-version}</version>
+      <version>2024.11-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
 

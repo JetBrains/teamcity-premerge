@@ -14,12 +14,6 @@
       <url>file://${local.repo.path}</url>
     </repository>
   </repositories>
-  <pluginRepositories>
-      <pluginRepository>
-          <id>JetBrains</id>
-          <url>https://download.jetbrains.com/teamcity-repository</url>
-      </pluginRepository>
-  </pluginRepositories>
   <build>
       <plugins>
           <plugin>
