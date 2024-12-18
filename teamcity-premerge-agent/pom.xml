@@ -7,7 +7,6 @@
     <version>2024.12-SNAPSHOT</version>
   </parent>
   <artifactId>teamcity-premerge-agent</artifactId>
-  <packaging>jar</packaging>
   <dependencies>
     <dependency>
       <groupId>org.jetbrains.teamcity</groupId>
@@ -19,36 +18,36 @@
     <dependency>
       <groupId>org.jetbrains.teamcity</groupId>
       <artifactId>agent-api</artifactId>
-      <version>${teamcity-version}</version>
+      <version>2024.11-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
 
     <dependency>
       <groupId>org.jetbrains.teamcity</groupId>
       <artifactId>oauth-integration-agent</artifactId>
-      <version>${teamcity-version}</version>
+      <version>2025.03-${teamcity.git.plugin.version}</version>
       <scope>provided</scope>
     </dependency>
 
     <dependency>
       <groupId>org.jetbrains.teamcity</groupId>
       <artifactId>tests-support</artifactId>
-      <version>${teamcity-version}</version>
+      <version>2024.11-SNAPSHOT</version>
       <scope>test</scope>
     </dependency>
 
     <dependency>
-      <groupId>org.jetbrains.teamcity.internal</groupId>
+      <groupId>org.jetbrains.teamcity.plugins</groupId>
       <artifactId>git-agent</artifactId>
-      <version>${teamcity-version}</version>
-      <scope>provided</scope>
+      <version>${teamcity.git.plugin.version}</version>
+      <scope>compile</scope>
     </dependency>
 
     <dependency>
-      <groupId>org.jetbrains.teamcity.internal</groupId>
+      <groupId>org.jetbrains.teamcity.plugins</groupId>
       <artifactId>git-common</artifactId>
-      <version>${teamcity-version}</version>
-      <scope>provided</scope>
+      <version>${teamcity.git.plugin.version}</version>
+      <scope>compile</scope>
     </dependency>
   </dependencies>
 
