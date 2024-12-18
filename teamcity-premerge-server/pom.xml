@@ -4,7 +4,7 @@
   <parent>
     <artifactId>teamcity-premerge</artifactId>
     <groupId>org.jetbrains.teamcity</groupId>
-    <version>2024.03-SNAPSHOT</version>
+    <version>2024.12-SNAPSHOT</version>
   </parent>
   <artifactId>teamcity-premerge-server</artifactId>
   <packaging>jar</packaging>
@@ -13,7 +13,7 @@
     <dependency>
       <groupId>org.jetbrains.teamcity</groupId>
       <artifactId>teamcity-premerge-common</artifactId>
-      <version>2024.03-SNAPSHOT</version>
+      <version>${teamcity-version}</version>
       <scope>compile</scope>
     </dependency>
 
