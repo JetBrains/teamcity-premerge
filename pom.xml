@@ -10,14 +10,8 @@
   <packaging>pom</packaging>
   <repositories>
     <repository>
-      <id>space-maven</id>
-      <url>https://packages.jetbrains.team/maven/p/tc/maven</url>
-      <snapshots><enabled>true</enabled></snapshots>
-    </repository>
-    <repository>
-        <id>JetBrains</id>
-        <url>https://download.jetbrains.com/teamcity-repository</url>
-      <snapshots><enabled>false</enabled></snapshots>
+      <id>local-teamcity-artifacts</id>
+      <url>file://${local.repo.path}</url>
     </repository>
   </repositories>
   <pluginRepositories>
@@ -54,6 +48,5 @@
     <module>teamcity-premerge-server</module>
     <module>teamcity-premerge-agent</module>
     <module>teamcity-premerge-common</module>
-    <module>build</module>
   </modules>
 </project>
