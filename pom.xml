@@ -13,6 +13,14 @@
       <id>local-teamcity-artifacts</id>
       <url>file://${local.repo.path}</url>
     </repository>
+    <repository>
+      <id>local-teamcity-artifacts-git</id>
+      <url>file://${local.repo.path}_git</url>
+    </repository>
+    <repository>
+      <id>jetbrains-all</id>
+      <url>https://download.jetbrains.com/teamcity-repository</url>
+    </repository>
   </repositories>
   <build>
       <plugins>
