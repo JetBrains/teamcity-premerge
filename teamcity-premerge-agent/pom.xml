@@ -25,7 +25,7 @@
     <dependency>
       <groupId>org.jetbrains.teamcity</groupId>
       <artifactId>oauth-integration-agent</artifactId>
-      <version>2025.03-${teamcity.git.plugin.version}</version>
+      <version>2025.03-${teamcity.core.build.number}</version>
       <scope>provided</scope>
     </dependency>
 
@@ -39,14 +39,14 @@
     <dependency>
       <groupId>org.jetbrains.teamcity.plugins</groupId>
       <artifactId>git-agent</artifactId>
-      <version>${teamcity.git.plugin.version}</version>
+      <version>${teamcity.core.build.number}</version>
       <scope>compile</scope>
     </dependency>
 
     <dependency>
       <groupId>org.jetbrains.teamcity.plugins</groupId>
       <artifactId>git-common</artifactId>
-      <version>${teamcity.git.plugin.version}</version>
+      <version>${teamcity.core.build.number}</version>
       <scope>compile</scope>
     </dependency>
   </dependencies>

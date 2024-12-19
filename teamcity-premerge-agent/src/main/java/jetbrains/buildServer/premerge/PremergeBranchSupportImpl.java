@@ -23,6 +23,7 @@ import jetbrains.buildServer.buildTriggers.vcs.git.AuthSettings;
 import jetbrains.buildServer.buildTriggers.vcs.git.GitVersion;
 import jetbrains.buildServer.buildTriggers.vcs.git.agent.*;
 import jetbrains.buildServer.buildTriggers.vcs.git.agent.command.MergeCommand;
+import jetbrains.buildServer.ssh.SshKnownHostsManager;
 import jetbrains.buildServer.util.StringUtil;
 import jetbrains.buildServer.vcs.VcsException;
 import jetbrains.buildServer.vcs.VcsRoot;
@@ -38,6 +39,7 @@ public class PremergeBranchSupportImpl implements PremergeBranchSupport {
   @NotNull protected final PremergeBuildProcess myProcess;
   @NotNull private final AgentGitVcsRoot myVcsRoot;
   @NotNull private final AgentTokenStorage myTokenStorage;
+  @NotNull private final SshKnownHostsManager mySshKnownHostsManager;
 
   @NotNull private final AgentRunningBuild myBuild;
 
@@ -45,7 +47,8 @@ public class PremergeBranchSupportImpl implements PremergeBranchSupport {
                                    @NotNull VcsRoot root,
                                    @NotNull String repoRelativePath,
                                    @NotNull AgentTokenStorage tokenStorage,
-                                   @NotNull AgentRunningBuild build) throws VcsException {
+                                   @NotNull AgentRunningBuild build,
+                                   @NotNull SshKnownHostsManager sshKnownHostsManager) throws VcsException {
     myTokenStorage = tokenStorage;
     myRoot = root;
     myProcess = process;
@@ -53,6 +56,7 @@ public class PremergeBranchSupportImpl implements PremergeBranchSupport {
     myConfig = createPluginConfig();
     myVcsRoot = createGitVcsRoot(root);
     myFacade = getFacade(repoRelativePath);
+    mySshKnownHostsManager = sshKnownHostsManager;
   }
 
   protected AgentPluginConfig createPluginConfig() throws VcsException {
@@ -69,7 +73,7 @@ public class PremergeBranchSupportImpl implements PremergeBranchSupport {
 
   protected AgentGitFacade getFacade(String repoRelativePath) {
     GitFactory gitFactory = myProcess.getGitMetaFactory().createFactory(myProcess.getSshService(),
-                                                                        new BuildContext(myProcess.getBuild(), myConfig));
+                                                                        new BuildContext(myProcess.getBuild(), myConfig, mySshKnownHostsManager));
     return gitFactory.create(new File(myProcess.getBuild().getCheckoutDirectory().getAbsolutePath() + "/" + repoRelativePath));
   }
 

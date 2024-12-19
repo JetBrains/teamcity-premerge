@@ -24,6 +24,7 @@ import jetbrains.buildServer.agent.oauth.AgentTokenStorage;
 import jetbrains.buildServer.buildTriggers.vcs.git.GitUtils;
 import jetbrains.buildServer.buildTriggers.vcs.git.MirrorManager;
 import jetbrains.buildServer.buildTriggers.vcs.git.agent.*;
+import jetbrains.buildServer.ssh.SshKnownHostsManager;
 import jetbrains.buildServer.vcs.VcsException;
 import jetbrains.buildServer.vcs.VcsRoot;
 import jetbrains.buildServer.vcs.VcsRootEntry;
@@ -38,6 +39,7 @@ public class PremergeBuildProcess extends BuildProcessAdapter {
   @NotNull private final AgentRunningBuild myBuild;
   @NotNull private final BuildRunnerContext myRunner;
   @NotNull private final AgentTokenStorage myTokenStorage;
+  @NotNull private final SshKnownHostsManager mySshKnownHostsManager;
   private String targetBranch;
   private final Map<String, String> targetSHAs = new HashMap<>();
   private ResultStatus status = ResultStatus.SKIPPED;
@@ -51,7 +53,8 @@ public class PremergeBuildProcess extends BuildProcessAdapter {
                               @NotNull MirrorManager mirrorManager,
                               @NotNull AgentRunningBuild build,
                               @NotNull BuildRunnerContext runner,
-                              @NotNull AgentTokenStorage tokenStorage) {
+                              @NotNull AgentTokenStorage tokenStorage,
+                              @NotNull SshKnownHostsManager sshKnownHostsManager) {
     myConfigFactory = configFactory;
     mySshService = sshService;
     myGitMetaFactory = gitMetaFactory;
@@ -59,6 +62,7 @@ public class PremergeBuildProcess extends BuildProcessAdapter {
     myBuild = build;
     myRunner = runner;
     myTokenStorage = tokenStorage;
+    mySshKnownHostsManager = sshKnownHostsManager;
   }
 
   @Override
@@ -123,7 +127,7 @@ public class PremergeBuildProcess extends BuildProcessAdapter {
   }
 
   protected PremergeBranchSupport createPremergeBranchSupport(VcsRoot root, String repoRelativePath) throws VcsException {
-    return new PremergeBranchSupportImpl(this, root, repoRelativePath, myTokenStorage, myBuild);
+    return new PremergeBranchSupportImpl(this, root, repoRelativePath, myTokenStorage, myBuild, mySshKnownHostsManager);
   }
 
   @NotNull

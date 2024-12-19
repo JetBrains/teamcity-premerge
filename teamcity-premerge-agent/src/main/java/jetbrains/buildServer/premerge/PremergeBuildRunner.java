@@ -22,6 +22,7 @@ import jetbrains.buildServer.buildTriggers.vcs.git.MirrorManager;
 import jetbrains.buildServer.buildTriggers.vcs.git.agent.GitAgentSSHService;
 import jetbrains.buildServer.buildTriggers.vcs.git.agent.GitMetaFactory;
 import jetbrains.buildServer.buildTriggers.vcs.git.agent.PluginConfigFactory;
+import jetbrains.buildServer.ssh.SshKnownHostsManager;
 import org.jetbrains.annotations.NotNull;
 
 public class PremergeBuildRunner implements AgentBuildRunner, AgentBuildRunnerInfo {
@@ -30,22 +31,26 @@ public class PremergeBuildRunner implements AgentBuildRunner, AgentBuildRunnerIn
   @NotNull private final PluginConfigFactory myConfigFactory;
   @NotNull private final MirrorManager myMirrorManager;
   @NotNull private final AgentTokenStorage myTokenStorage;
+  @NotNull private final SshKnownHostsManager mySshKnownHostsManager;
 
   public PremergeBuildRunner(@NotNull GitMetaFactory gitMetaFactory,
                              @NotNull GitAgentSSHService sshService,
                              @NotNull PluginConfigFactory configFactory,
-                             @NotNull MirrorManager mirrorManager, @NotNull AgentTokenStorage tokenStorage) {
+                             @NotNull MirrorManager mirrorManager,
+                             @NotNull AgentTokenStorage tokenStorage,
+                             @NotNull SshKnownHostsManager sshKnownHostsManager) {
     myGitMetaFactory = gitMetaFactory;
     mySshService = sshService;
     myConfigFactory = configFactory;
     myMirrorManager = mirrorManager;
     myTokenStorage = tokenStorage;
+    mySshKnownHostsManager = sshKnownHostsManager;
   }
 
   @NotNull
   @Override
   public BuildProcess createBuildProcess(@NotNull AgentRunningBuild runningBuild, @NotNull BuildRunnerContext context) {
-    return new PremergeBuildProcess(myConfigFactory, mySshService, myGitMetaFactory, myMirrorManager, runningBuild, context, myTokenStorage);
+    return new PremergeBuildProcess(myConfigFactory, mySshService, myGitMetaFactory, myMirrorManager, runningBuild, context, myTokenStorage, mySshKnownHostsManager);
   }
 
   @NotNull
