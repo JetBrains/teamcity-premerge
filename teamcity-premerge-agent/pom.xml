@@ -7,6 +7,9 @@
     <version>1.3-SNAPSHOT</version>
   </parent>
   <artifactId>teamcity-premerge-agent</artifactId>
+  <properties>
+    <teamcity.core.build.number>${teamcity-version}</teamcity.core.build.number>
+  </properties>
   <dependencies>
     <dependency>
       <groupId>org.jetbrains.teamcity</groupId>
