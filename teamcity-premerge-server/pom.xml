@@ -4,30 +4,30 @@
   <parent>
     <artifactId>teamcity-premerge</artifactId>
     <groupId>org.jetbrains.teamcity</groupId>
-    <version>2024.12-SNAPSHOT</version>
+    <version>1.3-SNAPSHOT</version>
   </parent>
   <artifactId>teamcity-premerge-server</artifactId>
   <packaging>jar</packaging>
+  <version>1.3-SNAPSHOT</version>
   <dependencies>
-
     <dependency>
       <groupId>org.jetbrains.teamcity</groupId>
       <artifactId>teamcity-premerge-common</artifactId>
-      <version>${teamcity-version}</version>
+      <version>1.3-SNAPSHOT</version>
       <scope>compile</scope>
     </dependency>
 
     <dependency>
       <groupId>org.jetbrains.teamcity</groupId>
       <artifactId>server-api</artifactId>
-      <version>2024.11-SNAPSHOT</version>
+      <version>${teamcity-version}</version>
       <scope>provided</scope>
     </dependency>
 
     <dependency>
       <groupId>org.jetbrains.teamcity</groupId>
       <artifactId>server-web-api</artifactId>
-      <version>2024.11-SNAPSHOT</version>
+      <version>${teamcity-version}</version>
       <type>war</type>
       <scope>provided</scope>
     </dependency>
@@ -35,14 +35,14 @@
     <dependency>
       <groupId>org.jetbrains.teamcity</groupId>
       <artifactId>tests-support</artifactId>
-      <version>2024.11-SNAPSHOT</version>
+      <version>${teamcity-version}</version>
       <scope>test</scope>
     </dependency>
 
     <dependency>
       <groupId>org.jetbrains.teamcity.internal</groupId>
       <artifactId>server</artifactId>
-      <version>2024.11-SNAPSHOT</version>
+      <version>${teamcity-version}</version>
       <scope>provided</scope>
     </dependency>
 
