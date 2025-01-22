@@ -43,14 +43,14 @@
       <groupId>org.jetbrains.teamcity.plugins</groupId>
       <artifactId>git-agent</artifactId>
       <version>${teamcity.core.build.number}</version>
-      <scope>compile</scope>
+      <scope>provided</scope>
     </dependency>
 
     <dependency>
       <groupId>org.jetbrains.teamcity.plugins</groupId>
       <artifactId>git-common</artifactId>
       <version>${teamcity.core.build.number}</version>
-      <scope>compile</scope>
+      <scope>provided</scope>
     </dependency>
   </dependencies>
 
