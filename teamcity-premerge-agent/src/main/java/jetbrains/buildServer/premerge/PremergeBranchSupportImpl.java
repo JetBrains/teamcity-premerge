@@ -53,10 +53,10 @@ public class PremergeBranchSupportImpl implements PremergeBranchSupport {
     myRoot = root;
     myProcess = process;
     myBuild = build;
+    mySshKnownHostsManager = sshKnownHostsManager;
     myConfig = createPluginConfig();
     myVcsRoot = createGitVcsRoot(root);
     myFacade = getFacade(repoRelativePath);
-    mySshKnownHostsManager = sshKnownHostsManager;
   }
 
   protected AgentPluginConfig createPluginConfig() throws VcsException {
